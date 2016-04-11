@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="WordsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="cetsix">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="float" Nullable="false" />
+          <Property Name="words" Type="nvarchar" MaxLength="255" />
+          <Property Name="meaning" Type="nvarchar" MaxLength="255" />
+          <Property Name="tyc" Type="nvarchar" MaxLength="255" />
+          <Property Name="fyc" Type="nvarchar" MaxLength="255" />
+          <Property Name="xj" Type="nvarchar" MaxLength="255" />
+          <Property Name="yj" Type="nvarchar" MaxLength="255" />
+          <Property Name="lx" Type="ntext" />
+        </EntityType>
+        <EntityType Name="Comment_t">
+          <Key>
+            <PropertyRef Name="Comment_Id" />
+          </Key>
+          <Property Name="Comment_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Comment_TargetId" Type="int" Nullable="false" />
+          <Property Name="Comment_Author" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Comment_Content" Type="text" Nullable="false" />
+          <Property Name="Comment_CreateDt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Record_t">
+          <Key>
+            <PropertyRef Name="Record_Id" />
+          </Key>
+          <Property Name="Record_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Record_UserUid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Record_WordId" Type="int" Nullable="false" />
+          <Property Name="Record_CreateDt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User_t">
+          <Key>
+            <PropertyRef Name="User_Id" />
+          </Key>
+          <Property Name="User_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_Uid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="User_Name" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="User_Password" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="WordsModelStoreContainer">
+          <EntitySet Name="cetsix" EntityType="Self.cetsix" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comment_t" EntityType="Self.Comment_t" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Record_t" EntityType="Self.Record_t" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_t" EntityType="Self.User_t" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WordsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="WordsEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="cetsix" EntityType="WordsModel.cetsix" />
+          <EntitySet Name="Comment_t" EntityType="WordsModel.Comment_t" />
+          <EntitySet Name="Record_t" EntityType="WordsModel.Record_t" />
+          <EntitySet Name="User_t" EntityType="WordsModel.User_t" />
+        </EntityContainer>
+        <EntityType Name="cetsix">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Double" Nullable="false" />
+          <Property Name="words" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="meaning" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="tyc" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="fyc" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="xj" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="yj" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="lx" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Comment_t">
+          <Key>
+            <PropertyRef Name="Comment_Id" />
+          </Key>
+          <Property Name="Comment_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Comment_TargetId" Type="Int32" Nullable="false" />
+          <Property Name="Comment_Author" Type="Guid" Nullable="false" />
+          <Property Name="Comment_Content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Comment_CreateDt" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Record_t">
+          <Key>
+            <PropertyRef Name="Record_Id" />
+          </Key>
+          <Property Name="Record_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Record_UserUid" Type="Guid" Nullable="false" />
+          <Property Name="Record_WordId" Type="Int32" Nullable="false" />
+          <Property Name="Record_CreateDt" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="User_t">
+          <Key>
+            <PropertyRef Name="User_Id" />
+          </Key>
+          <Property Name="User_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_Uid" Type="Guid" Nullable="false" />
+          <Property Name="User_Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="User_Password" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WordsModelStoreContainer" CdmEntityContainer="WordsEntities" >
+          <EntitySetMapping Name="cetsix">
+            <EntityTypeMapping TypeName="WordsModel.cetsix">
+              <MappingFragment StoreEntitySet="cetsix">
+                <ScalarProperty Name="lx" ColumnName="lx" />
+                <ScalarProperty Name="yj" ColumnName="yj" />
+                <ScalarProperty Name="xj" ColumnName="xj" />
+                <ScalarProperty Name="fyc" ColumnName="fyc" />
+                <ScalarProperty Name="tyc" ColumnName="tyc" />
+                <ScalarProperty Name="meaning" ColumnName="meaning" />
+                <ScalarProperty Name="words" ColumnName="words" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comment_t">
+            <EntityTypeMapping TypeName="WordsModel.Comment_t">
+              <MappingFragment StoreEntitySet="Comment_t">
+                <ScalarProperty Name="Comment_CreateDt" ColumnName="Comment_CreateDt" />
+                <ScalarProperty Name="Comment_Content" ColumnName="Comment_Content" />
+                <ScalarProperty Name="Comment_Author" ColumnName="Comment_Author" />
+                <ScalarProperty Name="Comment_TargetId" ColumnName="Comment_TargetId" />
+                <ScalarProperty Name="Comment_Id" ColumnName="Comment_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Record_t">
+            <EntityTypeMapping TypeName="WordsModel.Record_t">
+              <MappingFragment StoreEntitySet="Record_t">
+                <ScalarProperty Name="Record_CreateDt" ColumnName="Record_CreateDt" />
+                <ScalarProperty Name="Record_WordId" ColumnName="Record_WordId" />
+                <ScalarProperty Name="Record_UserUid" ColumnName="Record_UserUid" />
+                <ScalarProperty Name="Record_Id" ColumnName="Record_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_t">
+            <EntityTypeMapping TypeName="WordsModel.User_t">
+              <MappingFragment StoreEntitySet="User_t">
+                <ScalarProperty Name="User_Password" ColumnName="User_Password" />
+                <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+                <ScalarProperty Name="User_Uid" ColumnName="User_Uid" />
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Words.cetsix>
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="list-group">
+    @{
+        if (Model.Count()==0) {
+            <a class="list-group-item">没有相似的单词</a>
+        }
+        foreach (var item in Model)
+        {
+            <a href="/home/detail?id=@item.ID" class="list-group-item ">
+                <h4 class="list-group-item-heading">@item.words</h4>
+                <p class="list-group-item-text">@item.meaning</p>
+            </a>
+        }
+    }
+
+</div>

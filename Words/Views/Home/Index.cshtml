@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>奇怪的记单词</h1>
+    <p class="lead">该如何记单词呢</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>我也不知道怎么记单词</h2>
+        <p>
+            可以添加修改删除记单词计划，并且可以修改记单词计划
+        </p>
+        <p>@Html.ActionLink("计划管理", "Index", "Plan")</p>
+    </div>
+    <div class="col-md-4">
+        <h2>啊啊啊啊</h2>
+        <p>搞得好像我会记单词一样，目前已经收录了六级词汇</p>
+        <p>@Html.ActionLink("用户管理", "Index", "User")</p>
+    </div>
+    <div class="col-md-4">
+        <h2>啊啊啊啊啊啊啊</h2>
+        <p>不会记不会记</p>
+        <p>@Html.ActionLink("评价管理", "Index", "Comment")</p>
+    </div>
+</div>

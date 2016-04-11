@@ -1,0 +1,67 @@
+﻿@using System.Text.RegularExpressions
+@model cetsix
+@{
+    ViewBag.Title = "Detail";
+}
+
+<h1>@Model.words  <small>@Model.meaning</small></h1>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        例句
+    </div>
+    <div class="list-group">
+
+        @{
+
+            if (Model.lx != null)
+            {
+
+                foreach (var item in Regex.Split(Model.lx, "/r/n", RegexOptions.IgnoreCase).Where(p => p.Length > 0).ToArray())
+                {
+                    <div class="list-group-item"> @item</div>
+                }
+            }
+        }
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        父相似词汇
+    </div>
+    <div class="list-group">
+        @{
+            var listc = ViewBag.parentwords as List<cetsix>;
+            if (listc.Count == 0)
+            {
+                <a href="#" class="list-group-item">没有相似词汇</a>
+            }
+            foreach (var item in listc)
+            {
+                <a href="detail?id=@item.ID" class="list-group-item"><strong>@item.words</strong> @item.meaning</a>
+            }
+        }
+    </div>
+</div>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        子相似词汇
+    </div>
+    <div class="list-group">
+        @{
+            var listp = ViewBag.childwords as List<cetsix>;
+            if (listp.Count == 0)
+            {
+                <a href="#" class="list-group-item">没有相似词汇</a>
+            }
+            foreach (var item in listp)
+            {
+                <a href="detail?id=@item.ID" class="list-group-item"><strong>@item.words</strong> @item.meaning</a>
+            }
+        }
+    </div>
+</div>
